@@ -5,10 +5,10 @@ object Engine extends App {
 
 	val props = new GatlingPropertiesBuilder
 	props.runDescription("test")
+	props.simulationClass("ApiSimulation")
 	props.dataDirectory(IDEPathHelper.dataDirectory.toString)
 	props.resultsDirectory(IDEPathHelper.resultsDirectory.toString)
 	props.bodiesDirectory(IDEPathHelper.bodiesDirectory.toString)
 	props.binariesDirectory(IDEPathHelper.mavenBinariesDirectory.toString)
-	println("HELLO")
 	Gatling.fromMap(props.build)
 }
