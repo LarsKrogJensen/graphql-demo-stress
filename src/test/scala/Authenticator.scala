@@ -4,9 +4,9 @@ import scalaj.http.{Http, HttpRequest}
 
 object Authenticator {
 
-  def fetchToken(url: String): String = {
-    val request: HttpRequest = Http(url + "/authenticate")
-      .postData("""{"client_id": "xxxx", "client_secret" : "xxxxx"}""")
+  def fetchToken(): String = {
+    val request: HttpRequest = Http(Config.API_URL + "/authenticate")
+      .postData("""{"client_id": "xxxxx", "client_secret" : "xxxx"}""")
 
     val result = JSON.parseFull(request.asString.body)
     result match {
