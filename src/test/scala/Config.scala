@@ -2,14 +2,13 @@ import io.gatling.core.Predef.{constantUsersPerSec, rampUsersPerSec}
 import io.gatling.core.structure.{PopulationBuilder, ScenarioBuilder}
 
 import scala.concurrent.duration._
-/**
-  * Created by lars on 2017-03-28.
-  */
+
 object Config {
   val API_URL: String = System.getProperty("api_url", "http://localhost:8080")
-  val DURATION: Int = 60
-  val LOAD_FACTOR: Double = 200
-  var RAMP_UP_TIME: Int = 1
+  val WS_URL: String = System.getProperty("ws_url", "ws://localhost:8080")
+  val DURATION: Int = 60*5
+  val LOAD_FACTOR: Double = 50
+  var RAMP_UP_TIME: Int = 20
   val RAMP_USER_PER_SEC = 0.1
 
 
