@@ -6,9 +6,9 @@ import scala.concurrent.duration._
 object Config {
   val API_URL: String = System.getProperty("api_url", "http://localhost:8080")
   val WS_URL: String = System.getProperty("ws_url", "ws://localhost:8080")
-  val DURATION: Int = 60*5
+  val DURATION: Int = 60*1
   val LOAD_FACTOR: Double = 50
-  var RAMP_UP_TIME: Int = 20
+  var RAMP_UP_TIME: Int = 10
   val RAMP_USER_PER_SEC = 0.1
 
 

@@ -6,7 +6,7 @@ object Authenticator {
 
   def fetchToken(): String = {
     val request: HttpRequest = Http(Config.API_URL + "/authenticate")
-      .postData("""{"client_id": "xxxxx", "client_secret" : "xxxx"}""")
+      .postData("""{"client_id": "six", "client_secret" : "sixsixsix"}""")
 
     val result = JSON.parseFull(request.asString.body)
     result match {

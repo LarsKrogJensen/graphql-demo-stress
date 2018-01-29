@@ -11,22 +11,40 @@ object NLRScenarios {
     """
       |{
       | "query": "query {
-      |   liveRightNow(first: 1) {
-      |     range {
-      |       start
-      |       size
-      |       total
-      |     }
-      |     events {
-      |       id
-      |       name
-      |       mainBetOffer {
-      |         id
-      |         outcomes {id name}
-      |       }
-      |     }
-      |   }
-      |  }"
+      |  event(id: 1004092377) {
+      |    id
+      |    name
+      |    context {
+      |      country {
+      |        key
+      |        name
+      |      }
+      |      league {
+      |        key
+      |        name
+      |      }
+      |      competition {
+      |        key
+      |        name
+      |      }
+      |    }
+      |    betOffers {      
+      |      nodes {
+      |        ...BO
+      |      }
+      |    }
+      |  }
+      |}
+      |
+      |fragment BO on BetOffer {
+      |  id
+      |  name
+      |  position
+      |  outcomes {
+      |    id
+      |    name
+      |  }
+      |}"
       |}
     """.stripMargin.replace("\n", "")
 
@@ -37,7 +55,7 @@ object NLRScenarios {
         .post("/graphql")
         .body(StringBody(query))
         .check(status.is(200))
-        .check(regex(".*liveRightNow.*"))
+        .check(regex(".*Maidstone.*"))
     )
 
 }
