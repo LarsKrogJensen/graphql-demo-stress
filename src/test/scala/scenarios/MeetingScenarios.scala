@@ -7,6 +7,7 @@ import io.gatling.http.Predef._
 
 
 object MeetingScenarios {
+  private val q = """{"query":"query {\n\tmeetings (offeringId: \"888\", sport: \"horse_racing\") {\n\t\tnodes {\n\t\t\tid\n\t\t}\n\t}\n}"}""""
   private val query =
     """
       |{
@@ -25,7 +26,7 @@ object MeetingScenarios {
     .exec(
       http("meetings-query")
         .post("/statistics/v2018/graphql")
-        .body(StringBody(query))
+        .body(StringBody(q))
         .check(status.is(200))
         .check(regex(".*meetings.*"))
     )
