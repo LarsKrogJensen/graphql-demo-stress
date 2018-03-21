@@ -1,8 +1,7 @@
-import Authenticator.fetchToken
 import Config._
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-import scenarios.{ListingScenarios, NLRScenarios, SubscriptionScenarios}
+import scenarios.MeetingScenarios
 
 
 class ApiSimulation extends Simulation {
@@ -13,14 +12,14 @@ class ApiSimulation extends Simulation {
       .wsBaseURL(WS_URL)
       .acceptHeader("application/json")
       //.authorizationHeader(fetchToken())
-      .acceptEncodingHeader("gzip, deflate")
+//      .acceptEncodingHeader("gzip, deflate")
       .acceptLanguageHeader("en-US,en;q=0.5")
       .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0")
 
 
   setUp(
-//    SubscriptionScenarios.betOfferSubscription.injectDefaults
-    NLRScenarios.liveRightNowQuery.injectDefaults
+    //    SubscriptionScenarios.betOfferSubscription.injectDefaults
+    MeetingScenarios.meetingsQuery.injectDefaults
     //    ListingScenarios.listingQuery.injectDefaults
   ).protocols(httpConf)
 
